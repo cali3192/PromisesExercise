@@ -5,9 +5,11 @@ function pluckFirstLineFromFile(filePath){
   return new Promise((resolve, reject)=>{
     fs.readFile(filePath, "utf8", (err, data)=>{
       if(err){
-        reject(err)
+        reject(console.log(err))
       } else {
-        resolve(data.split("\n")[0]);
+        // resolve(data.split("\n")[1]);
+        resolve(data.split('\n').slice(0, 2))
+        // resolve(data)
       }
     })
   })
@@ -15,5 +17,6 @@ function pluckFirstLineFromFile(filePath){
 
 pluckFirstLineFromFile("text.txt")
 .then((data)=>{
-  console.log(data);
+  console.log('SUCESS!', data);
 })
+.catch(err => console.log(err))
